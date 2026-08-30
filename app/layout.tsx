@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
+import Script from 'next/script'
 import './globals.css'
 
 const _geist = Geist({ subsets: ["latin"] });
@@ -37,6 +38,12 @@ export default function RootLayout({
   return (
     <html lang="en" className="bg-background scroll-smooth">
       <body className="font-sans antialiased bg-background text-foreground">
+        <Script
+          src="https://web-grower.vercel.app/wg.js"
+          data-wg-key="d2222222-2222-4222-8222-222222222222"
+          data-wg-origin="https://web-grower.vercel.app"
+          strategy="afterInteractive"
+        />
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
